@@ -94,7 +94,7 @@
 	const {showSpinner$, handlerDirective} = createIframeHandler(height, !noresize);
 </script>
 
-<div class="mb-4 py-2 px-0 px-sm-3">
+<div class="mb-6 py-2 px-0 px-sm-3">
 	<div class={`position-relative ${isDoc ? 'border-bottom' : 'border'} iframe-container`}>
 		{#if $showSpinner$}
 			<div class="position-absolute top-50 start-50 translate-middle iframeSpinner">

@@ -1,13 +1,13 @@
-@import '../custom.variables';
+// @import '../custom.variables';
 
 $mobileMargin: 16px;
 
-dialog .contents {
-	@include media-breakpoint-down(md) {
-		margin-left: -$mobileMargin;
-		margin-right: -$mobileMargin;
-	}
-}
+// dialog .contents {
+// 	@include media-breakpoint-down(md) {
+// 		margin-left: -$mobileMargin;
+// 		margin-right: -$mobileMargin;
+// 	}
+// }
 
 .menu-item {
 	display: block;
@@ -37,18 +37,18 @@ dialog .contents {
 		font-weight: 500;
 	}
 
-	@include media-breakpoint-down(md) {
-		&:focus {
-			border-color: var(--bs-primary-text-emphasis-border-subtle);
-		}
-	}
+	// @include media-breakpoint-down(md) {
+	// 	&:focus {
+	// 		border-color: var(--bs-primary-text-emphasis-border-subtle);
+	// 	}
+	// }
 
-	@include media-breakpoint-down(md) {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
-		padding-left: $mobileMargin * 2;
-		padding-right: $mobileMargin * 2;
-	}
+	// @include media-breakpoint-down(md) {
+	// 	padding-top: 0.5rem;
+	// 	padding-bottom: 0.5rem;
+	// 	padding-left: $mobileMargin * 2;
+	// 	padding-right: $mobileMargin * 2;
+	// }
 }
 
 .menu-item-toc {

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {onMount} from 'svelte';
 	import docsearch from '@docsearch/js';
+	import '@docsearch/css';
 	import {selectedFramework$} from '$lib/stores';
 
 	function generateUniqueId() {

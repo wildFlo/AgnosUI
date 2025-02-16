@@ -31,12 +31,12 @@
 
 <header
 	class={[
-		'au-header bg-light pt-3 px-4 px-lg-5 d-flex mb-4 align-items-center title',
+		'au-header bg-base-100 pt-4 px-6 lg:px-12 flex mb-6 items-center title',
 		{
 			'au-rounded': !tabs.length,
 			'au-rounded-header': tabs.length,
-			'pb-5': tabs.length,
-			'pb-3': !tabs.length,
+			'pb-12': tabs.length,
+			'pb-4': !tabs.length,
 		},
 	]}
 >

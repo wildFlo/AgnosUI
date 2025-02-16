@@ -93,10 +93,10 @@
 	let selectedPkg = $derived(packages.find((pkg) => pkg.isSelected)!);
 </script>
 
-<nav class="w-100 mt-1">
+<nav class="w-full mt-1">
 	{#if $page.data.includesFwk}
-		<strong class="d-flex w-100 align-items-center fw-semibold">Framework </strong>
-		<Dropdown ariaLabel="choose the framework" items={frameworks} dropdownClass="mb-2 mt-1" btnClass="btn-outline-primary">
+		<strong class="flex w-full items-center fw-semibold">Framework </strong>
+		<Dropdown ariaLabel="choose the framework" items={frameworks} dropdownClass="mb-2 mt-1" btnClass="btn-outline btn-primary">
 			{#snippet buttonSnip()}
 				<Svg svg={selectedFwk.logo} className="icon-20 align-middle me-3" />
 				<span class="fwk-name">{selectedFwk.id}</span>
@@ -108,8 +108,8 @@
 		</Dropdown>
 	{/if}
 	{#if $page.data.includesPkg}
-		<strong class="d-flex w-100 align-items-center fw-semibold">Package </strong>
-		<Dropdown ariaLabel="choose the package" items={packages} dropdownClass="mb-2 mt-1" btnClass="btn-outline-primary">
+		<strong class="flex w-full items-center fw-semibold">Package </strong>
+		<Dropdown ariaLabel="choose the package" items={packages} dropdownClass="mb-2 mt-1" btnClass="btn-outline btn-primary">
 			{#snippet buttonSnip()}
 				<Svg svg={selectedPkg.logo} className="icon-20 align-middle me-3" />
 				<span class="pkg-name">{selectedPkg.id}</span>
@@ -125,7 +125,7 @@
 		{#if path}
 			{@const isCurrent = $page.url.pathname?.includes(path)}
 			<a
-				class={['menu-item menu-item-sidenav d-flex align-items-center justify-content-between', {active: isCurrent}]}
+				class={['menu-item menu-item-sidenav flex items-center justify-content-between', {active: isCurrent}]}
 				aria-current={isCurrent ? 'page' : undefined}
 				href="{$pathToRoot$}{path}"
 			>
@@ -138,7 +138,7 @@
 					{#each submenu as { label, status, path, subpath, slug } (slug)}
 						{@const isCurrent = $page.url.pathname?.includes(path)}
 						<a
-							class={['menu-item menu-item-sidenav d-flex align-items-center justify-content-between', {active: isCurrent}]}
+							class={['menu-item menu-item-sidenav flex items-center justify-content-between', {active: isCurrent}]}
 							aria-current={isCurrent ? 'page' : undefined}
 							href="{$pathToRoot$}{path}{subpath ?? ''}"
 						>

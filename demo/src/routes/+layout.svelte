@@ -4,7 +4,8 @@
 	import bluesky from '$resources/bluesky.svg?raw';
 	import twitter from 'bootstrap-icons/icons/twitter-x.svg?raw';
 	import {canonicalURL$, pathToRoot$, routeLevel$, selectedFramework$, selectedApiFramework$} from '$lib/stores';
-	import './styles.scss';
+	// import './styles.scss';
+	import './app.css';
 	import {afterNavigate, beforeNavigate, onNavigate} from '$app/navigation';
 	import {page, updated} from '$app/stores';
 	import MobileSubMenu from './menu/MobileSubMenu.svelte';
@@ -98,68 +99,73 @@
 </svelte:head>
 
 <div class="agnos-ui">
-	<nav class="navbar-nav demo-nav-top navbar z-1">
-		<div class="container-xxl">
-			<a class="navbar-brand mx-lg-4 mx-xl-5 d-flex align-items-center" href={$pathToRoot$}
+	<nav class="navbar">
+		<!-- <nav class="navbar-nav demo-nav-top navbar z-1 relative flex-col flex-wrap items-center justify-between py-2 px-1"> -->
+		<div class="navbar-start">
+			<a class="navbar-brand mx-lg-4 mx-xl-5 flex items-center" href={$pathToRoot$}
 				><Svg svg={agnosUILogo} className="agnosui-logo-brand me-2" /> AgnosUI
 			</a>
-			<div class="align-items-center d-flex">
-				<div class="align-items-left d-flex gap-3">
-					<Search />
-					<div class="vr my-1 d-none d-md-inline-block"></div>
-				</div>
-				<div class="align-items-center d-none d-md-flex gap-3">
-					<div class="d-flex align-items-center"></div>
-					<a
-						class={['nav-link', {active: $page.route.id?.startsWith('/docs/')}]}
-						href="{$pathToRoot$}docs/{$selectedFramework$}/getting-started/introduction"
-						aria-current={$page.route.id?.startsWith('/docs/') ? 'page' : undefined}>Documentation</a
-					>
-					{#if import.meta.env.API}
-						<a
-							class={['nav-link', {active: isApi}]}
-							href="{$pathToRoot$}api/{$selectedApiFramework$}/bootstrap/types"
-							aria-current={isApi ? 'page' : undefined}>API</a
-						>
-					{/if}
-					<a
-						class={['nav-link', {active: $page.route.id?.startsWith('/blog/')}]}
-						href="{$pathToRoot$}blog/2024-12-06"
-						aria-current={$page.route.id?.startsWith('/blog/') ? 'page' : undefined}>Blog</a
-					>
-					<div class="vr my-1"></div>
-					<Theme />
-					<div class="vr my-1"></div>
-					<Versions versions={data.versions} />
-					<div class="vr my-1"></div>
-					<a class="nav-link" href="https://github.com/AmadeusITGroup/AgnosUI" aria-label="link to GitHub repository" target="_blank">
-						<Svg className="icon-24 align-middle" svg={github} />
-					</a>
-					<a class="nav-link" href="https://twitter.com/AgnosUI" aria-label="link to twitter / x account" target="_blank">
-						<Svg className="icon-24 align-middle" svg={twitter} />
-					</a>
-					<a class="nav-link" href="https://bsky.app/profile/agnosui.bsky.social" aria-label="link to bluesky profile" target="_blank">
-						<Svg className="icon-24 align-middle" svg={bluesky} />
-					</a>
-				</div>
+		</div>
+		<div class="navbar-center">
+			<div class="md:hidden">
+				<Search />
 			</div>
-			<div class="align-items-center d-flex d-md-none gap-3">
+		</div>
+		<div class="navbar-end">
+			<div class="hidden md:flex">
+				<Search />
+				<div class="divider divider-horizontal"></div>
+			</div>
+			<div class="hidden md:flex gap-2 xl:gap-3 items-center">
+				<a
+					class={['nav-link', {active: $page.route.id?.startsWith('/docs/')}]}
+					href="{$pathToRoot$}docs/{$selectedFramework$}/getting-started/introduction"
+					aria-current={$page.route.id?.startsWith('/docs/') ? 'page' : undefined}>Documentation</a
+				>
+				{#if import.meta.env.API}
+					<a
+						class={['nav-link', {active: isApi}]}
+						href="{$pathToRoot$}api/{$selectedApiFramework$}/bootstrap/types"
+						aria-current={isApi ? 'page' : undefined}>API</a
+					>
+				{/if}
+				<a
+					class={['nav-link', {active: $page.route.id?.startsWith('/blog/')}]}
+					href="{$pathToRoot$}blog/2024-12-06"
+					aria-current={$page.route.id?.startsWith('/blog/') ? 'page' : undefined}>Blog</a
+				>
+				<div class="divider divider-horizontal"></div>
+				<Theme />
+				<div class="divider divider-horizontal"></div>
+				<Versions versions={data.versions} />
+				<div class="divider divider-horizontal"></div>
+				<a class="nav-link" href="https://github.com/AmadeusITGroup/AgnosUI" aria-label="link to GitHub repository" target="_blank">
+					<Svg className="icon-24 align-middle" svg={github} />
+				</a>
+				<a class="nav-link" href="https://twitter.com/AgnosUI" aria-label="link to twitter / x account" target="_blank">
+					<Svg className="icon-24 align-middle" svg={twitter} />
+				</a>
+				<a class="nav-link" href="https://bsky.app/profile/agnosui.bsky.social" aria-label="link to bluesky profile" target="_blank">
+					<Svg className="icon-24 align-middle" svg={bluesky} />
+				</a>
+			</div>
+			<div class="items-center flex md:hidden gap-2">
 				<Theme />
 				<Versions versions={data.versions} />
 				<MobileMenu />
 			</div>
 		</div>
 	</nav>
-	<div class="demo-main d-flex flex-column z-0" bind:this={container}>
+	<div class="demo-main flex flex-col z-0" bind:this={container}>
 		{#if isMainPage}
 			{@render children()}
 		{:else}
-			<div class="container-xxl">
-				<div class="row flex-wrap flex-sm-nowrap align-content-between">
-					<aside class="demo-sidebar mx-lg-4 mx-xl-5 d-none d-md-flex align-items-center align-items-sm-start col-auto side-menu me-3">
+			<div class="container-xxl w-full mx-auto">
+				<div class="row flex-wrap sm:flex-nowrap content-between">
+					<aside class="demo-sidebar lg:mx-6 xl:mx-12 hidden md:block items-center sm:items-start col-auto side-menu me-3">
 						<SideMenu />
 					</aside>
-					<div class="pb-4 col">
+					<div class="pb-6 col">
 						<div class="demo-mobile-menu d-block d-lg-none">
 							<MobileSubMenu />
 						</div>
@@ -167,7 +173,7 @@
 							{@render children()}
 						</MainSection>
 					</div>
-					<div class="ms-lg-4 ms-xl-5 demo-toc d-none d-lg-flex col-auto side-menu me-auto">
+					<div class="lg:ms-4 xl:ms-5 demo-toc hidden lg:flex col-auto side-menu me-auto">
 						<TOC />
 					</div>
 				</div>

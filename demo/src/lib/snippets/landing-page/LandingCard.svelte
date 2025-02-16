@@ -11,7 +11,7 @@
 	let {title, svg = '', children}: Props = $props();
 </script>
 
-<div class="col-12 col-md-6 col-lg-4 mb-3">
+<div class="col-12 md:col-6 lg:col-4 mb-4 w-full md:w-1/2 lg:w-1/3">
 	<div class="card">
 		<div class="row g-0">
 			{#if svg}

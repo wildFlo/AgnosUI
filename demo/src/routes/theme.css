@@ -1,0 +1,90 @@
+/* @plugin "daisyui/theme" {
+    themes: light --default, dark --prefersdark;
+    root: ":root";
+    include: ;
+    exclude: ;
+    prefix: ;
+    logs: true;
+  }
+ */
+
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+	name: 'light';
+	default: true;
+	prefersdark: false;
+	--color-primary: #26005a;
+	--color-primary-content: #fffce6;
+	--color-secondary: #fffce6;
+	--color-base-100: #fff;
+	--color-base-200: #f8eeff;
+	--color-base-content: #160033;
+}
+
+@plugin "daisyui/theme" {
+	name: 'dark';
+	default: false;
+	prefersdark: true;
+	--color-primary: #26005a;
+	--color-secondary: #fffce6;
+	--color-base-200: #f8eeff;
+}
+
+.divider {
+	margin-inline: 0rem;
+}
+
+.container-xxl {
+	width: 100%;
+	padding-inline: 0.75rem;
+	margin-inline: auto;
+}
+
+ol,
+ul {
+	padding-left: 2rem;
+}
+
+.g-0 {
+	--gutter-y: 0;
+	--gutter-x: 0;
+}
+
+.row {
+	--gutter-x: 1.5rem;
+	--gutter-y: 0;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: calc(-1 * var(--gutter-y));
+	margin-inline: calc(-0.5 * var(--gutter-x));
+}
+
+.row > * {
+	max-width: 100%;
+	padding-inline: calc(var(--gutter-x) * 0.5);
+}
+
+:root {
+	--card-p: 1rem;
+}
+
+.col-auto {
+	flex: 0 0 auto;
+	width: auto;
+}
+
+.col {
+	flex: 1 0 0%;
+}
+
+.dropdown-toggle:after {
+	display: inline-block;
+	margin-left: 0.255em;
+	vertical-align: 0.255em;
+	content: '';
+	border-top: 0.3em solid;
+	border-right: 0.3em solid transparent;
+	border-bottom: 0;
+	border-left: 0.3em solid transparent;
+}

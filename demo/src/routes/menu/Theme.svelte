@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Svg from '$lib/layout/Svg.svelte';
-	import Dropdown from '$lib/layout/Dropdown.svelte';
+	// import Dropdown from '$lib/layout/Dropdown.svelte';
+	import DropdownDaisyUI from '$lib/layout/DropdownDaisyUI.svelte';
 	import {computed, writable, type ReadableSignal} from '@amadeus-it-group/tansu';
 	import halfCircle from 'bootstrap-icons/icons/circle-half.svg?raw';
 	import moon from 'bootstrap-icons/icons/moon-stars-fill.svg?raw';
@@ -101,9 +102,9 @@
 
 	function applyTheme(id: string) {
 		if (id === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			document.documentElement.setAttribute('data-bs-theme', 'dark');
+			document.documentElement.setAttribute('data-theme', 'dark');
 		} else {
-			document.documentElement.setAttribute('data-bs-theme', id);
+			document.documentElement.setAttribute('data-theme', id);
 		}
 		document.documentElement.setAttribute('data-agnos-theme', id);
 	}
@@ -119,15 +120,15 @@
 	});
 </script>
 
-<div class="nav-item" bind:this={toggle}>
-	<Dropdown btnClass="btn-dark-mode nav-link" ariaLabel="toggle the dark mode" items={$themes$} placement="end">
+<div class="flex" bind:this={toggle}>
+	<DropdownDaisyUI btnClass="btn-ghost p-0 w-max" ariaLabel="toggle the dark mode" items={$themes$} placement="end">
 		{#snippet buttonSnip()}
 			{#each $themes$ as theme}
 				<Svg svg={theme.icon} className={theme.id} />
 			{/each}
 		{/snippet}
-		{#snippet itemSnip(item)}
+		{#snippet itemSnip(item: {icon: any; name: any})}
 			<Svg className="me-3" svg={item.icon} />{item.name}
 		{/snippet}
-	</Dropdown>
+	</DropdownDaisyUI>
 </div>

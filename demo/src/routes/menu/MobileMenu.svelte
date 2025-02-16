@@ -17,7 +17,7 @@
 </script>
 
 <button
-	class="btn d-flex align-items-center px-0"
+	class="btn flex items-center px-0"
 	aria-expanded={open}
 	onclick={() => {
 		open = true;
@@ -28,7 +28,7 @@
 </button>
 
 <MobileDialog title="AgnosUI" {open} {onclose}>
-	<nav class="navbar navbar-light flex-column align-items-stretch">
+	<nav class="navbar navbar-light flex-col align-items-stretch">
 		<a
 			class={['nav-item nav-link', {active: $page.route.id?.startsWith('/docs/')}]}
 			href="{$pathToRoot$}docs/{$selectedFramework$}/getting-started/introduction"
@@ -55,7 +55,7 @@
 		<hr />
 	</nav>
 
-	<div class="d-flex justify-content-center">
+	<div class="flex justify-content-center">
 		<a class="nav-link" href="https://github.com/AmadeusITGroup/AgnosUI" aria-label="link to GitHub repository" target="_blank">
 			<Svg className="icon-24 align-middle" svg={github} />
 		</a>

@@ -22,7 +22,7 @@
 {#if data.import}
 	<Alert type="info" className="p-0 border-0 border-start border-5 border-info" visible dismissible={false}>
 		<div class="alert-container p-3 border border-info rounded-end">
-			<div class="d-flex align-items-center">
+			<div class="d-flex items-center">
 				<span class="d-flex me-2">
 					<Svg svg={biInfoCircleFill} className="icon-16" />
 				</span>
